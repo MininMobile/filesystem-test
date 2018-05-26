@@ -2,3 +2,25 @@ body {
 	background: #333;
 	color: #ccc;
 }
+
+input[type=text] {
+	background: transparent;
+	border: none;
+	border-bottom: 0.25em solid #555;
+	transition: border-bottom 0.2s;
+	color: #fff;
+}
+
+input[type=text]:hover {
+	border-bottom: 0.25em solid #999;
+}
+
+input[type=text]:focus {
+	border-bottom: 0.25em solid #aaa !important;
+}
+
+input[type=submit] {
+	border: none;
+	border-radius: 2px;
+	color: #333;
+}
