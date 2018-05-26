@@ -133,9 +133,9 @@ function delFile(type = "file") {
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
-			navving += `["${dirname.value}"] = undefined`;
+			navving += `["${dirname.value}"]`;
 	
-			eval(navving);
+			eval(`delete ${navving}`);
 	
 			dirname.value = "";
 		}
@@ -147,9 +147,9 @@ function delFile(type = "file") {
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
-			navving += `["${filename.value}"] = undefined`;
+			navving += `["${filename.value}"]`;
 	
-			eval(navving);
+			eval(`delete ${navving}`);
 	
 			filename.value = "";
 		}
@@ -157,6 +157,12 @@ function delFile(type = "file") {
 }
 
 function updateDisplays() {
+	let navving = "hdd";
+	loc.forEach(folder => {
+		navving += `["${folder}"]`;
+	});
+	curdir = eval(navving);
+
 	const breadcrumbs = document.getElementById("breadcrumbs");
 	const dirdisplay = document.getElementById("dir");
 
