@@ -96,7 +96,7 @@ function updateDisplays() {
 		types.push(curdir[file].type);
 	});
 
-	dirdisplay.innerHTML = `${files.length} Files<br>\n`;
+	dirdisplay.innerHTML = `${files.length} Files<br><br>\n`;
 	for (let i = 0; i < files.length; i++) {
 		dirdisplay.innerHTML += `${types[i].toUpperCase()} ${files[i]}<br>\n`;
 	}
