@@ -1,4 +1,6 @@
-var location = ["root"];
+// filesystem
+
+var loc = ["root"];
 var hdd = {
 	"root": {
 		type:dir,
@@ -39,4 +41,37 @@ var hdd = {
 			type:dir
 		}
 	}
+}
+
+// bin
+
+var curdir = {};
+
+function dir() {
+	let navto = document.getElementById("query").value;
+	let navving = "hdd";
+
+	var x = true;
+	do {
+		try {
+			navving = "hdd";
+			location.forEach(folder => {
+				navving += `["${folder}"]`;
+			});
+			curdir = eval(navving);
+
+			if (curdir) x = false;
+		} catch (e) {
+			loc.pop();
+		}
+	} while (x)
+}
+
+// misc
+
+function navigate() {
+	dir();
+	updateDisplays();
+
+	return false;
 }
