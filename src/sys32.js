@@ -64,6 +64,8 @@ function dir() {
 		loc.push(navto);
 	}
 
+	query.value = "";
+
 	let x = true;
 	do {
 		let navving = "hdd";
@@ -81,8 +83,6 @@ function dir() {
 			loc.pop();
 		}
 	} while (x)
-
-	query.value = "";
 }
 
 function openFile() {
@@ -187,7 +187,7 @@ function updateDisplays() {
 
 // misc
 
-function cd() {
+function cdto() {
 	dir();
 	updateDisplays();
 
