@@ -44,6 +44,17 @@ input[type=submit]:hover {
 	background: #eee;
 }
 
+/* tweaks */
+
+#content {
+	flex: 5.9;
+}
+
+#filename {
+	flex: 3;
+	margin-left: 0.5em;
+}
+
 /* displays */
 
 #breadcrumbs {
