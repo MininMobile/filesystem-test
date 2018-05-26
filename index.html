@@ -11,6 +11,15 @@
 		<input type="text" placeholder="query..." id="query">
 		<input type="submit" value="cd">
 	</form>
+	<form action="#" onsubmit="return mkdir()">
+		<input type="text" placeholder="directory" id="directory">
+		<input type="submit" value="mkdir">
+	</form>
+	<form action="#" onsubmit="return echo()">
+		<input type="text" placeholder="content" id="content">
+		<input type="text" placeholder="filename" id="filename">
+		<input type="submit" value="echo > txt">
+	</form>
 	<hr>
 	<h2 id="breadcrumbs">root/</h2>
 	<p id="dir"></p>

@@ -90,6 +90,19 @@ function openFile() {
 	}
 }
 
+function writeFile(type = "file", format = "text") {
+	if (type == "folder") {
+		const dirname = document.getElementById("directory");
+
+		// code
+	} else if (type == "file") {
+		const content = document.getElementById("content");
+		const filename = document.getElementById("filename");
+
+		// code
+	}
+}
+
 function updateDisplays() {
 	const breadcrumbs = document.getElementById("breadcrumbs");
 	const dirdisplay = document.getElementById("dir");
@@ -114,6 +127,20 @@ function updateDisplays() {
 
 function navigate() {
 	dir();
+	updateDisplays();
+
+	return false;
+}
+
+function mkdir() {
+	writeFile("folder");
+	updateDisplays();
+
+	return false;
+}
+
+function echo() {
+	writeFile("file");
 	updateDisplays();
 
 	return false;
