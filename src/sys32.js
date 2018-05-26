@@ -187,7 +187,7 @@ function updateDisplays() {
 
 // misc
 
-function navigate() {
+function cd() {
 	dir();
 	updateDisplays();
 
