@@ -94,12 +94,33 @@ function writeFile(type = "file", format = "text") {
 	if (type == "folder") {
 		const dirname = document.getElementById("directory");
 
-		// code
+		if (!dirname.value == "") {
+			let navving = "hdd";
+			loc.forEach(folder => {
+				navving += `["${folder}"]`;
+			});
+			navving += `["${dirname.value}"] = { type:"dir" }`;
+	
+			eval(navving);
+	
+			dirname.value = "";
+		}
 	} else if (type == "file") {
 		const content = document.getElementById("content");
 		const filename = document.getElementById("filename");
 
-		// code
+		if (!(content.value == "" && filename.value == "")) {
+			let navving = "hdd";
+			loc.forEach(folder => {
+				navving += `["${folder}"]`;
+			});
+			navving += `["${filename.value}.txt"] = { type:"file", format:"text", content:"${content.value}" }`;
+	
+			eval(navving);
+	
+			content.value = "";
+			filename.value = "";
+		}
 	}
 }
 
