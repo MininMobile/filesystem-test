@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./src/theme.css">
+	<script src="./src/sys32.js"></script>
 	<title>Filesystem Test</title>
 </head>
 <body>
-	
+	<form action="#" onsubmit="return navigate()">
+		<input type="text" placeholder="query..." id="query">
+		<input type="submit">
+	</form>
+	<hr>
+	<h3 id="breadcrumbs">/</h3>
+	<p id="dir"></p>
 </body>
 </html>
