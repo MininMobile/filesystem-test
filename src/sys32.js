@@ -126,9 +126,9 @@ function writeFile(type = "file", format = "text") {
 
 function delFile(type = "file") {
 	if (type == "folder") {
-		const dirname = document.getElementById("directory");
+		const dirname = document.getElementById("directory2");
 
-		if (!dirname.value == "") {
+		if (!dirname.value == "" && confirm(`Delete "${dirname.value}"?`)) {
 			let navving = "hdd";
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
@@ -140,19 +140,17 @@ function delFile(type = "file") {
 			dirname.value = "";
 		}
 	} else if (type == "file") {
-		const content = document.getElementById("content");
-		const filename = document.getElementById("filename");
+		const filename = document.getElementById("file");
 
-		if (!(content.value == "" && filename.value == "")) {
+		if (!filename.value == "" && confirm(`Delete "${filename.value}"?`)) {
 			let navving = "hdd";
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
-			navving += `["${filename.value}.txt"] = undefined`;
+			navving += `["${filename.value}"] = undefined`;
 	
 			eval(navving);
 	
-			content.value = "";
 			filename.value = "";
 		}
 	}
