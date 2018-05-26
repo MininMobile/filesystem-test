@@ -1,7 +1,5 @@
 // filesystem
 
-var curdir = {};
-var loc = ["root"];
 var hdd = {
 	"root": {
 		type:"dir",
@@ -43,6 +41,8 @@ var hdd = {
 		}
 	}
 }
+var loc = ["root"];
+var curdir = hdd["root"];
 
 // bin
 
@@ -89,16 +89,16 @@ function updateDisplays() {
 	breadcrumbs.innerHTML = loc.join("/");
 	breadcrumbs.innerHTML += "/";
 
-	let files = Object.getOwnPropertyNames(curdir);
+	let files = Object.getOwnPropertyNames(curdir); files.shift();
 
 	let types = [];
 	files.forEach(file => {
 		types.push(curdir[file].type);
 	});
 
-	dirdisplay.innerHTML = `${files.length} Files\n`;
+	dirdisplay.innerHTML = `${files.length} Files<br>\n`;
 	for (let i = 0; i < files.length; i++) {
-		dirdisplay.innerHTML += `${types[i].toUpperCase()} ${files[i]}`;
+		dirdisplay.innerHTML += `${types[i].toUpperCase()} ${files[i]}<br>\n`;
 	}
 }
 
