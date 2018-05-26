@@ -54,7 +54,8 @@ function isAtRoot() {
 }
 
 function dir() {
-	let navto = document.getElementById("query").value;
+	let query = document.getElementById("query");
+	let navto = query.value;
 
 	if (navto == "..") {
 		if (!isAtRoot())
@@ -80,6 +81,8 @@ function dir() {
 			loc.pop();
 		}
 	} while (x)
+
+	query.value = "";
 }
 
 function openFile() {
