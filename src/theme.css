@@ -1,13 +1,25 @@
 body {
+	margin: 0;
+	padding: 0;
+	width: 50%;
+	padding-left: 25%;
 	background: #333;
 	color: #ccc;
 }
 
+/* I/O */
+
+form {
+	display: flex;
+	margin: 0.2em
+}
+
 input[type=text] {
+	flex: 9;
 	background: transparent;
 	border: none;
 	border-bottom: 0.25em solid #555;
-	transition: border-bottom 0.2s;
+	transition: border-bottom 0.1s;
 	color: #fff;
 }
 
@@ -20,7 +32,20 @@ input[type=text]:focus {
 }
 
 input[type=submit] {
+	flex: 1;
 	border: none;
 	border-radius: 2px;
+	transition: background 0.1s;
+	background: #ccc;
 	color: #333;
+}
+
+input[type=submit]:hover {
+	background: #eee;
+}
+
+/* displays */
+
+#breadcrumbs {
+	text-align: center;
 }
