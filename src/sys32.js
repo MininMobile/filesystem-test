@@ -67,6 +67,14 @@ function dir() {
 	} while (x)
 }
 
+function updateDisplays() {
+	const breadcrumbs = document.getElementById("breadcrumbs");
+	const dirdisplay = document.getElementById("dir");
+
+	breadcrumbs.innerHTML = loc.join("/");
+	breadcrumbs.innerHTML += "/";
+}
+
 // misc
 
 function navigate() {
