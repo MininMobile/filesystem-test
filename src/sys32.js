@@ -88,6 +88,18 @@ function updateDisplays() {
 
 	breadcrumbs.innerHTML = loc.join("/");
 	breadcrumbs.innerHTML += "/";
+
+	let files = Object.getOwnPropertyNames(curdir);
+
+	let types = [];
+	files.forEach(file => {
+		types.push(curdir[file].type);
+	});
+
+	dirdisplay.innerHTML = `${files.length} Files\n`;
+	for (let i = 0; i < files.length; i++) {
+		dirdisplay.innerHTML += `${types[i].toUpperCase()} ${files[i]}`;
+	}
 }
 
 // misc
