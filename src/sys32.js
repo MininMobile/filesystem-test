@@ -54,7 +54,7 @@ function isAtRoot() {
 }
 
 function dir() {
-	let query = document.getElementById("query");
+	let query = document.getElementById("cd");
 	let navto = query.value;
 
 	if (navto == "..") {
