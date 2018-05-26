@@ -1,67 +1,82 @@
 // filesystem
 
+var curdir = {};
 var loc = ["root"];
 var hdd = {
 	"root": {
-		type:dir,
+		type:"dir",
 		"home": {
-			type:dir,
+			type:"dir",
 			"Documents": {
-				type:dir,
+				type:"dir",
 				"JavaScript": {
-					type:dir,
+					type:"dir",
 					"helloworld.js": {
-						type:file,
-						format:javascript,
+						type:"file",
+						format:"javascript",
 						content:"alert('Hello, World!')"
 					}
 				},
 				"Homework": {
-					type:dir,
+					type:"dir",
 					"passwords.txt": {
-						type:file,
-						format:text,
+						type:"file",
+						format:"text",
 						content:"HA! YOU'VE JUST GOT PRANKED!"
 					},
 					"pornos.mp4.txt": {
-						type:file,
-						format:text,
+						type:"file",
+						format:"text",
 						content:"HA! THIS IS not A VIRUS!"
 					}
 				}
 			},
 			"Videos": {
-				type:dir
+				type:"dir"
 			},
 			"Photos": {
-				type:dir
+				type:"dir"
 			}
 		},
 		"usr": {
-			type:dir
+			type:"dir"
 		}
 	}
 }
 
 // bin
 
-var curdir = {};
+function isAtRoot() {
+	if (loc.length == 1 && loc[0] == "root")
+		return true;
+	else
+		return false;
+}
 
 function dir() {
 	let navto = document.getElementById("query").value;
-	let navving = "hdd";
 
-	var x = true;
+	if (navto == "..") {
+		if (!isAtRoot())
+			loc.pop();
+	} else {
+		loc.push(navto);
+	}
+
+	let x = true;
 	do {
-		try {
-			navving = "hdd";
-			location.forEach(folder => {
-				navving += `["${folder}"]`;
-			});
-			curdir = eval(navving);
+		let navving = "hdd";
+		loc.forEach(folder => {
+			navving += `["${folder}"]`;
+		});
+		curdir = eval(navving);
 
-			if (curdir) x = false;
-		} catch (e) {
+		if (!curdir) {
+			loc.pop();
+		} else if (curdir.type == "dir") {
+			x = false;
+		} else if (curdir.type == "file") {
+			openFile(curdir);
 			loc.pop();
 		}
 	} while (x)
