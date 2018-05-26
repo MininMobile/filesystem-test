@@ -15,10 +15,18 @@
 		<input type="text" placeholder="directory" id="directory">
 		<input type="submit" value="mkdir">
 	</form>
+	<form action="#" onsubmit="return rmdir()">
+		<input type="text" placeholder="directory" id="directory2">
+		<input type="submit" value="rmdir">
+	</form>
 	<form action="#" onsubmit="return echo()">
 		<input type="text" placeholder="content" id="content">
 		<input type="text" placeholder="filename" id="filename">
 		<input type="submit" value="echo > txt">
+	</form>
+	<form action="#" onsubmit="return del()">
+		<input type="text" placeholder="filename" id="file">
+		<input type="submit" value="del">
 	</form>
 	<hr>
 	<h2 id="breadcrumbs">root/</h2>

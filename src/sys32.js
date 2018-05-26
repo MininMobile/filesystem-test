@@ -114,7 +114,41 @@ function writeFile(type = "file", format = "text") {
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
-			navving += `["${filename.value}.txt"] = { type:"file", format:"text", content:"${content.value}" }`;
+			navving += `["${filename.value}.txt"] = { type:"file", format:format, content:"${content.value}" }`;
+	
+			eval(navving);
+	
+			content.value = "";
+			filename.value = "";
+		}
+	}
+}
+
+function delFile(type = "file") {
+	if (type == "folder") {
+		const dirname = document.getElementById("directory");
+
+		if (!dirname.value == "") {
+			let navving = "hdd";
+			loc.forEach(folder => {
+				navving += `["${folder}"]`;
+			});
+			navving += `["${dirname.value}"] = undefined`;
+	
+			eval(navving);
+	
+			dirname.value = "";
+		}
+	} else if (type == "file") {
+		const content = document.getElementById("content");
+		const filename = document.getElementById("filename");
+
+		if (!(content.value == "" && filename.value == "")) {
+			let navving = "hdd";
+			loc.forEach(folder => {
+				navving += `["${folder}"]`;
+			});
+			navving += `["${filename.value}.txt"] = undefined`;
 	
 			eval(navving);
 	
@@ -162,6 +196,20 @@ function mkdir() {
 
 function echo() {
 	writeFile("file");
+	updateDisplays();
+
+	return false;
+}
+
+function rmdir() {
+	delFile("folder");
+	updateDisplays();
+
+	return false;
+}
+
+function del() {
+	delFile("file");
 	updateDisplays();
 
 	return false;
