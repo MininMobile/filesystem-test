@@ -82,6 +82,14 @@ function dir() {
 	} while (x)
 }
 
+function openFile() {
+	if (curdir.format == "text") {
+		alert(`TEXT FILE: ${curdir.content}`);
+	} else if (curdir.format == "javascript") {
+		eval(curdir.content);
+	}
+}
+
 function updateDisplays() {
 	const breadcrumbs = document.getElementById("breadcrumbs");
 	const dirdisplay = document.getElementById("dir");
