@@ -47,6 +47,7 @@ var curdir = hdd["root"];
 // bin
 
 function isAtRoot() {
+	// if loc is set to root
 	if (loc.length == 1 && loc[0] == "root")
 		return true;
 	else
@@ -54,9 +55,11 @@ function isAtRoot() {
 }
 
 function dir() {
+	// get cd query
 	let query = document.getElementById("cd");
 	let navto = query.value;
 
+	// go up on ..
 	if (navto == "..") {
 		if (!isAtRoot())
 			loc.pop();
@@ -64,21 +67,30 @@ function dir() {
 		loc.push(navto);
 	}
 
+	// Empty Query field
 	query.value = "";
 
+	// validator variable
 	let x = true;
+	// while location in tree is not a directory
 	do {
+		// reset navigation to hdd
 		let navving = "hdd";
+		// foreach selected location in tree, cd there
 		loc.forEach(folder => {
 			navving += `["${folder}"]`;
 		});
+		// string to object
 		curdir = eval(navving);
 
 		if (!curdir) {
+			// if undefined, remove last cd
 			loc.pop();
 		} else if (curdir.type == "dir") {
+			// if at directory, quit
 			x = false;
 		} else if (curdir.type == "file") {
+			// if at file, open and remove last cd
 			openFile(curdir);
 			loc.pop();
 		}
@@ -87,8 +99,10 @@ function dir() {
 
 function openFile() {
 	if (curdir.format == "text") {
+		// if file format is text, echo contents
 		alert(`TEXT FILE: ${curdir.content}`);
 	} else if (curdir.format == "javascript") {
+		// if file format is javascript, run contents
 		eval(curdir.content);
 	}
 }
