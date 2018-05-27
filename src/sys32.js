@@ -157,58 +157,83 @@ function writeFile(type = "file", format = "text") {
 
 function delFile(type = "file") {
 	if (type == "folder") {
+		// get directory name
 		const dirname = document.getElementById("directory2");
 
+		// confirm delete
 		if (!dirname.value == "" && confirm(`Delete "${dirname.value}"?`)) {
+			// reset navigation to hdd
 			let navving = "hdd";
+			// foreach selected location in tree, cd there
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
+			// add deleted directory to end of tree
 			navving += `["${dirname.value}"]`;
-	
+
+			// delete directory at end of tree
 			eval(`delete ${navving}`);
 	
+			// clear query
 			dirname.value = "";
 		}
 	} else if (type == "file") {
+		// get file name
 		const filename = document.getElementById("file");
 
+		// confirm delete
 		if (!filename.value == "" && confirm(`Delete "${filename.value}"?`)) {
+			// reset navigation to hdd
 			let navving = "hdd";
+			// foreach selected location in tree, cd there
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
+			// add deleted file to end of tree
 			navving += `["${filename.value}"]`;
-	
+
+			// delete file at end of tree
 			eval(`delete ${navving}`);
-	
+
+			// clear query
 			filename.value = "";
 		}
 	}
 }
 
 function updateDisplays() {
+	// reset navigation to hdd
 	let navving = "hdd";
+	// foreach selected location in tree, cd there
 	loc.forEach(folder => {
 		navving += `["${folder}"]`;
 	});
+	// get current directory
 	curdir = eval(navving);
 
+	// get display options
 	const breadcrumbs = document.getElementById("breadcrumbs");
 	const dirdisplay = document.getElementById("dir");
 
+	// breadcrumbs
 	breadcrumbs.innerHTML = loc.join("/");
 	breadcrumbs.innerHTML += "/";
 
+	// get files in current directory
 	let files = Object.getOwnPropertyNames(curdir); files.shift();
 
+	// get types in current directory
 	let types = [];
+	// foreach file add type to types array
 	files.forEach(file => {
 		types.push(curdir[file].type);
 	});
 
+	// add file count to dir display
 	dirdisplay.innerHTML = `${files.length} Files<br><br>\n`;
+	// foreach file
 	for (let i = 0; i < files.length; i++) {
+		// add type and name to dir display
 		dirdisplay.innerHTML += `${types[i].toUpperCase()} ${files[i]}<br>\n`;
 	}
 }
