@@ -57,6 +57,10 @@ function isAtRoot() {
 		return false;
 }
 
+function saveFiles() {
+	localStorage.setItem("hdd", hdd);
+}
+
 function dir() {
 	// get cd query
 	let query = document.getElementById("cd");
@@ -246,6 +250,7 @@ function updateDisplays() {
 function cdto() {
 	dir();
 	updateDisplays();
+	saveFiles();
 
 	return false;
 }
@@ -253,6 +258,7 @@ function cdto() {
 function mkdir() {
 	writeFile("folder");
 	updateDisplays();
+	saveFiles();
 
 	return false;
 }
@@ -260,6 +266,7 @@ function mkdir() {
 function echo() {
 	writeFile("file");
 	updateDisplays();
+	saveFiles();
 
 	return false;
 }
@@ -267,6 +274,7 @@ function echo() {
 function rmdir() {
 	delFile("folder");
 	updateDisplays();
+	saveFiles();
 
 	return false;
 }
@@ -274,6 +282,7 @@ function rmdir() {
 function del() {
 	delFile("file");
 	updateDisplays();
+	saveFiles();
 
 	return false;
 }
