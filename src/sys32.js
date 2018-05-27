@@ -41,6 +41,9 @@ var hdd = {
 		}
 	}
 }
+
+if (localStorage.getItem("hdd") != undefined) hdd = localStorage.getItem("hdd");
+
 var loc = ["root"];
 var curdir = hdd["root"];
 
