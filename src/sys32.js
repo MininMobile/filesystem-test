@@ -109,32 +109,46 @@ function openFile() {
 
 function writeFile(type = "file", format = "text") {
 	if (type == "folder") {
+		// get directory name
 		const dirname = document.getElementById("directory");
 
+		// if no directory name, abort
 		if (!dirname.value == "") {
+			// reset navigation to hdd
 			let navving = "hdd";
+			// foreach selected location in tree, cd there
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
+			// create new directory at end of tree
 			navving += `["${dirname.value}"] = { type:"dir" }`;
 	
+			// string to code
 			eval(navving);
 	
+			// clear query
 			dirname.value = "";
 		}
 	} else if (type == "file") {
+		// get filename & content
 		const content = document.getElementById("content");
 		const filename = document.getElementById("filename");
 
+		// if no filename/content, abort
 		if (!(content.value == "" && filename.value == "")) {
+			// reset navigation to hdd
 			let navving = "hdd";
+			// foreach selected location in tree, cd there
 			loc.forEach(folder => {
 				navving += `["${folder}"]`;
 			});
+			// create new file at end of tree
 			navving += `["${filename.value}.txt"] = { type:"file", format:format, content:"${content.value}" }`;
-	
+
+			// string to code
 			eval(navving);
-	
+
+			// clear querys
 			content.value = "";
 			filename.value = "";
 		}
